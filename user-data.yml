@@ -8,7 +8,8 @@ groups:
   - {{ wsuser }}
 
 runcmd:
+  - mkdir /root/tests/
   - myvar=`echo 'This is my var'`
-  - echo $myvar > /root/myvar
-  - echo {{ ds.meta_data.hostname }} > /root/hostname
+  - echo $myvar > /root/tests/myvar
+  - echo {{ ds.meta_data.hostname }} > /root/tests/hostname
   
