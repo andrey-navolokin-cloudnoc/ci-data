@@ -1,7 +1,9 @@
 ## template: jinja
 #cloud-config
 
-{% set user = 'ws-user' %}
+
+{% set wsuser = "ws-user" %}
+
 
 runcmd:
   - myvar=`echo 'This is my var'`
