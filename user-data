@@ -1,7 +1,10 @@
 ## template: jinja
 #cloud-config
 
-{% set testing = 'it worked' %}
+{% set testing %}
+runcmd:
+  - echo "blabla"
+{% endset %}
 
 runcmd:
   - myvar=`echo 'This is my var'`
