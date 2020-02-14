@@ -12,5 +12,4 @@ runcmd:
   - echo $myvar > /root/myvar
   - echo {{ ds.meta_data.hostname }} > /root/hostname
   - echo {{ system_info }} > /root/sytem
-  - echo {{ os }} > /root/os
   
