@@ -1,7 +1,7 @@
 ## template: jinja
 #cloud-config
 
-{%- from '/etc/cloud/cloud.cfg' import system_info with context %}
+{%- from '/etc/cloud/cloud.cfg' import system_info %}
 
 runcmd:
   - myvar=`echo 'This is my var'`
