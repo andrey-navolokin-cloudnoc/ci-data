@@ -5,8 +5,8 @@
 {% set wsuser = "ws-user" %}
 
 
-groups:
-  - {{ wsuser }}
+# groups:
+#  - {{ wsuser }}
 
 
 users:
@@ -14,6 +14,7 @@ users:
     lock_passwd: True
     gecos: {{ wsuser }}
     groups: [adm, audio, cdrom, dialout, dip, floppy, lxd, netdev, plugdev, sudo, video]
+    no_user_group: True
     sudo: ["ALL=(ALL) NOPASSWD:ALL"]
     shell: /bin/bash
     ssh_authorized_keys: {{ public_ssh_keys }}
