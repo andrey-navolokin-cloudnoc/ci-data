@@ -5,14 +5,10 @@
 {% set wsuser = "ws-user" %}
 
 
-# groups:
-#  - {{ wsuser }}
-
-
 users:
   - name: {{ wsuser }}
     lock_passwd: True
-    no_user_group: True
+#    no_user_group: True
     gecos: {{ wsuser }}
     groups: [adm, audio, cdrom, dialout, dip, floppy, lxd, netdev, plugdev, sudo, video]
     sudo: ["ALL=(ALL) NOPASSWD:ALL"]
