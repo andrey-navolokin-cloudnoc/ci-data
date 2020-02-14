@@ -1,12 +1,14 @@
 ## template: jinja
 #cloud-config
 
-{% extends "/etc/cloud/cloud.cfg" %}
+{% include "/etc/cloud/cloud.cfg" %}
+{% set test-var = "blabla" %}
 
 
 runcmd:
   - myvar=`echo 'This is my var'`
   - echo $myvar > /root/myvar
   - echo {{ ds.meta_data.hostname }} > /root/hostname
+  - echo {{ test-var }} > /root/test-var
   - echo {{ system_info }} > /root/sytem
   
