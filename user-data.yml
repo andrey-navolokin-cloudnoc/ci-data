@@ -4,8 +4,19 @@
 
 {% set wsuser = "ws-user" %}
 
+
 groups:
   - {{ wsuser }}
+
+
+users:
+  - name: {{ wsuser }}
+    lock_passwd: True
+    gecos: {{ wsuser }}
+    groups: [adm, audio, cdrom, dialout, dip, floppy, lxd, netdev, plugdev, sudo, video, {{ wsuser }}]
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    shell: /bin/bash
+
 
 runcmd:
   - mkdir /root/tests/
