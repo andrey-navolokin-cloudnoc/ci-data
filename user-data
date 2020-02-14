@@ -6,13 +6,13 @@
 groups:
   - {{ ws-user }}
 
-users:
-  - name: {{ ws-user }}
-    lock_passwd: True
-    gecos: {{ ws-user }}
-    groups: [adm, audio, cdrom, dialout, dip, floppy, lxd, netdev, plugdev, sudo, video, {{ ws-user }}]
-    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
-    shell: /bin/bash
+# users:
+#   - name: {{ ws-user }}
+#     lock_passwd: True
+#     gecos: {{ ws-user }}
+#     groups: [adm, audio, cdrom, dialout, dip, floppy, lxd, netdev, plugdev, sudo, video, {{ ws-user }}]
+#     sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+#     shell: /bin/bash
 
 runcmd:
   - myvar=`echo 'This is my var'`
