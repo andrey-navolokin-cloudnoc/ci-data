@@ -4,6 +4,8 @@
 
 {% set wsuser = "ws-user" %}
 
+groups:
+  - {{ wsuser }}
 
 runcmd:
   - myvar=`echo 'This is my var'`
