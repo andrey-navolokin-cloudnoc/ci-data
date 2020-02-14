@@ -1,0 +1,5 @@
+## template: jinja
+#cloud-config
+
+runcmd:
+  - echo {{ ds.meta_data.hostname }} > /root/hostname
