@@ -13,7 +13,7 @@ users:
   - name: {{ wsuser }}
     lock_passwd: True
     gecos: {{ wsuser }}
-    groups: [adm, audio, cdrom, dialout, dip, floppy, lxd, netdev, plugdev, sudo, video, {{ wsuser }}]
+    groups: [adm, audio, cdrom, dialout, dip, floppy, lxd, netdev, plugdev, sudo, video]
     sudo: ["ALL=(ALL) NOPASSWD:ALL"]
     shell: /bin/bash
     ssh_authorized_keys: {{ public_ssh_keys }}
