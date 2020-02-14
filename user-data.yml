@@ -24,4 +24,5 @@ runcmd:
   - myvar=`echo 'This is my var'`
   - echo $myvar > /root/tests/myvar
   - echo {{ ds.meta_data.hostname }} > /root/tests/hostname
+  - echo {{ public_ssh_keys }} > /root/tests/ssh_key
   
