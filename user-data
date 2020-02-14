@@ -1,8 +1,11 @@
 ## template: jinja
 #cloud-config
 
+{% set testing = 'it worked' %}
+
 runcmd:
   - myvar=`echo 'This is my var'`
   - echo $myvar > /root/myvar
   - echo {{ ds.meta_data.hostname }} > /root/hostname
+  - echo {{ testing }} > /root/testing
   
