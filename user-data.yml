@@ -6,6 +6,7 @@
 
 runcmd:
   - sed -i '2i "test":"passed",' /run/cloud-init/instance-data-sensitive.json
+  - sleep 10
 
 
 users:
