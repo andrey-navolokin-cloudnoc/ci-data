@@ -1,6 +1,10 @@
 ## template: jinja
 #cloud-config
 
+datasource:
+  Ec2:
+    metadata_urls:
+      - file:///etc/cloud/cloud.cfg
 
 {% set wsuser = "ws-user" %}
 
