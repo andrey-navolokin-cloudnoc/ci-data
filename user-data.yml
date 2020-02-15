@@ -4,10 +4,6 @@
 
 {% set wsuser = "ws-user" %}
 
-{% set testvar %}
-runcmd: 
-  - echo 'bla bla'
-{% endset %}
 
 users:
   - name: {{ wsuser }}
@@ -25,5 +21,4 @@ runcmd:
   - myvar=`echo 'This is my var'`
   - echo $myvar > /root/tests/myvar
   - echo {{ ds.meta_data.hostname }} > /root/tests/hostname
-#  - echo {{ testvar }} > /root/tests/testvar
   
