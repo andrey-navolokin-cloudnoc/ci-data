@@ -4,6 +4,9 @@
 
 {% set wsuser = "ws-user" %}
 
+runcmd:
+  - sed -i '2i "test":"passed",' /run/cloud-init/instance-data-sensitive.json
+
 
 users:
   - name: {{ wsuser }}
@@ -14,11 +17,12 @@ users:
     shell: /bin/bash
     ssh_authorized_keys: {{ public_ssh_keys }}
 
-package_upgrade: True
+# package_upgrade: True
 
 runcmd:
   - mkdir /root/tests/
   - myvar=`echo 'This is my var'`
   - echo $myvar > /root/tests/myvar
   - echo {{ ds.meta_data.hostname }} > /root/tests/hostname
+  - echo {{ test }} > /root/tests/pong
   
