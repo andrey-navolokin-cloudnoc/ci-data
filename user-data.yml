@@ -3,6 +3,7 @@
 
 
 {% set wsuser = "ws-user" %}
+{% import '/tmp/var.jinja' as VR %}
 
 users:
   - name: {{ wsuser }}
