@@ -4,11 +4,6 @@
 
 {% set wsuser = "ws-user" %}
 
-runcmd:
-  - sed -i '2i "test":"passed",' /run/cloud-init/instance-data-sensitive.json
-  - sleep 10
-
-
 users:
   - name: {{ wsuser }}
     lock_passwd: True
@@ -26,4 +21,5 @@ runcmd:
   - echo $myvar > /root/tests/myvar
   - echo {{ ds.meta_data.hostname }} > /root/tests/hostname
   - echo {{ test }} > /root/tests/pong
+  - echo {{ myvar }} > /root/tests/jinja
   
