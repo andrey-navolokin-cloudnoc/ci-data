@@ -9,7 +9,7 @@ package_upgrade: true
 package_reboot_if_required: false
 
 
-{% set wsuser = "mikhail.rubinskiy" %}
+# {% set wsuser = "mikhail.rubinskiy" %}
 
 users:
   - name: {{ wsuser }}
