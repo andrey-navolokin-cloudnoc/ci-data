@@ -1,8 +1,9 @@
 ## template: jinja
 #cloud-config
 
-package:
-  - xubuntu-desktop
+packages:
+#  - xubuntu-desktop
+  - ubuntu-desktop
 
 package_upgrade: true
 package_reboot_if_required: false
@@ -34,5 +35,5 @@ runcmd:
   - echo "@reboot ip route add 10.0.0.0/23 via $def_route_ip dev $def_route_interface" >> /tmp/crons
   - crontab /tmp/crons
   - rm /tmp/crons
-  - sed -i -E 's/^DefaultDesktopCommand.*/DefaultDesktopCommand "\/usr\/bin\/X11\/startxfce4"/' /usr/NX/etc/node.cfg
+#  - sed -i -E 's/^DefaultDesktopCommand.*/DefaultDesktopCommand "\/usr\/bin\/X11\/startxfce4"/' /usr/NX/etc/node.cfg
   - systemctl restart nxserver.service
