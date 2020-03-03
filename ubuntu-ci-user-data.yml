@@ -1,0 +1,38 @@
+## template: jinja
+#cloud-config
+
+package:
+  - xubuntu-desktop
+
+package_upgrade: true
+package_reboot_if_required: false
+
+
+{% set wsuser = "mikhail.rubinskiy" %}
+
+users:
+  - name: {{ wsuser }}
+    lock_passwd: True
+    gecos: {{ wsuser }}
+    groups: [adm, audio, cdrom, dialout, dip, floppy, lxd, netdev, plugdev, sudo, video]
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    shell: /bin/bash
+    ssh_authorized_keys: {{ public_ssh_keys }}
+
+
+runcmd:
+  - wget https://download.nomachine.com/download/6.9/Linux/nomachine_6.9.2_1_amd64.deb -O /tmp/nomachine.deb
+  - apt install -y /tmp/nomachine.deb
+  - mkdir -p /home/{{ wsuser }}/.nx/config
+  - echo {{ public_ssh_keys[1:-1] }} > /home/{{ wsuser }}/.nx/config/authorized.crt
+  - chmod 0600 /home/{{ wsuser }}/.nx/config/authorized.crt
+  - chown -R {{ wsuser }}:{{ wsuser }} /home/{{ wsuser }}
+  - def_route_ip=`ip r s | grep ^default | awk '{print $3}'`
+  - def_route_interface=`ip r s | grep -oP "^default.*dev \w{3}\d{1}" | tail -c 5`
+  - ip route add 10.0.0.0/23 via $def_route_ip dev $def_route_interface
+  - crontab -l > /tmp/crons
+  - echo "@reboot ip route add 10.0.0.0/23 via $def_route_ip dev $def_route_interface" >> /tmp/crons
+  - crontab /tmp/crons
+  - rm /tmp/crons
+  - sed -i -E 's/^DefaultDesktopCommand.*/DefaultDesktopCommand "\/usr\/bin\/X11\/startxfce4"/' /usr/NX/etc/node.cfg
+  - systemctl restart nxserver.service
