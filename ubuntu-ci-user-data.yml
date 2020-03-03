@@ -25,7 +25,7 @@ runcmd:
   - wget https://download.nomachine.com/download/6.9/Linux/nomachine_6.9.2_1_amd64.deb -O /tmp/nomachine.deb
   - apt install -y /tmp/nomachine.deb
   - mkdir -p /home/{{ wsuser }}/.nx/config
-  - echo {{ public_ssh_keys[1:-1] }} > /home/{{ wsuser }}/.nx/config/authorized.crt
+  - cp /home/{{ wsuser }}/.ssh/authorized_keys /home/{{ wsuser }}/.nx/config/authorized.crt
   - chmod 0600 /home/{{ wsuser }}/.nx/config/authorized.crt
   - chown -R {{ wsuser }}:{{ wsuser }} /home/{{ wsuser }}
   - def_route_ip=`ip r s | grep ^default | awk '{print $3}'`
