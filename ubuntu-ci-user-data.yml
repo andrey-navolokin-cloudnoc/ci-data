@@ -36,4 +36,5 @@ runcmd:
   - crontab /tmp/crons
   - rm /tmp/crons
 #  - sed -i -E 's/^DefaultDesktopCommand.*/DefaultDesktopCommand "\/usr\/bin\/X11\/startxfce4"/' /usr/NX/etc/node.cfg
+  - systemctl set-default multi-user.target
   - systemctl restart nxserver.service
