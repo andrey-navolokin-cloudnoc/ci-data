@@ -34,6 +34,7 @@ runcmd:
   - ip route add 10.0.10.0/23 via $def_route_ip dev $def_route_interface
   - crontab -l > /tmp/crons
   - echo "@reboot ip route add 10.0.0.0/23 via $def_route_ip dev $def_route_interface" >> /tmp/crons
+  - echo "@reboot ip route add 10.0.10.0/23 via $def_route_ip dev $def_route_interface" >> /tmp/crons
   - crontab /tmp/crons
   - rm /tmp/crons
 #  - sed -i -E 's/^DefaultDesktopCommand.*/DefaultDesktopCommand "\/usr\/bin\/X11\/startxfce4"/' /usr/NX/etc/node.cfg
