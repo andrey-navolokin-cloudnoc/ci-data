@@ -31,6 +31,7 @@ runcmd:
   - def_route_ip=`ip r s | grep ^default | awk '{print $3}'`
   - def_route_interface=`ip r s | grep -oP "^default.*dev \w{3}\d{1}" | tail -c 5`
   - ip route add 10.0.0.0/23 via $def_route_ip dev $def_route_interface
+  - ip route add 10.0.10.0/23 via $def_route_ip dev $def_route_interface
   - crontab -l > /tmp/crons
   - echo "@reboot ip route add 10.0.0.0/23 via $def_route_ip dev $def_route_interface" >> /tmp/crons
   - crontab /tmp/crons
